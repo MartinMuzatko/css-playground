@@ -54,7 +54,7 @@ module.exports = {
         }),
     ],
 
-    devtool: "inline-source-map", // enum
+    devtool: "#source-map", // enum
 
     context: __dirname, // string (absolute path!)
 
