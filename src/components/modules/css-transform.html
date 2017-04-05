@@ -1,0 +1,212 @@
+<css-transform>
+    .box \{
+        transform: {transform};
+    \}
+    <div style="width: 40%">
+        <div each={modifier, name in modifiers}>
+            {name}
+            <div each={value, slider in modifier.default}>
+                <slider group={name} ref={name+slider} initial-value={value} options={parent.modifier}></slider>
+            </div>
+        </div>
+    </div>
+    <div contenteditable class="box" style="transform: {transform};">
+        Text
+    </div>
+    <script>
+        import '../slider.html'
+        this.linearUnits = ['px', 'em', 'in', '%']
+        this.radialUnits = ['deg', 'rad', 'turn']
+        this.transform ='transform: rotate(10deg)'
+        window.x = this
+        this.on('mount', ()=>{
+            for (var ref in this.refs) {
+                ref = this.refs[ref]
+                ref.on('update', (slider)=>{
+                    console.log(slider);
+                    if (slider) {
+                        this.modifiers[slider.opts.group].value = slider.value
+                        this.transform = ''
+                        for (let group in this.modifiers) {
+                            var modifier = this.modifiers[group]
+                            //if (parseInt(modifier.default[0]))
+                            this.transform += `${group}(${modifier.value}${modifier.validUnits[0]}) `
+                        }
+                        this.update()
+                    }
+                })
+            }
+        })
+
+        this.modifiers = {
+            // matrix: {
+            //     validUnits: [''],
+            //     default: [1, 2, 3, 4, 5, 6],
+            //     range: {
+            //         min: -10,
+            //         max: 10
+            //     }
+            // },
+            // translate: {
+            //     validUnits: this.linearUnits,
+            //     default: ['12px', '50%'],
+            //     range: {
+            //         min: -100,
+            //         max: 100
+            //     }
+            // },
+            translateX: {
+                validUnits: this.linearUnits,
+                default: ['0px'],
+                range: {
+                    min: -100,
+                    max: 100
+                }
+            },
+            translateY: {
+                validUnits: this.linearUnits,
+                default: ['0px'],
+                range: {
+                    min: -100,
+                    max: 100
+                }
+            },
+            // scale: {
+            //     validUnits: [''],
+            //     default: [2, 0.5],
+            //     range: {
+            //         min: -1,
+            //         max: 2
+            //     }
+            // },
+            scaleX: {
+                validUnits: [''],
+                default: [1],
+                range: {
+                    min: -10,
+                    max: 10
+                }
+            },
+            scaleY: {
+                validUnits: [''],
+                default: [1],
+                range: {
+                    min: -10,
+                    max: 10
+                }
+            },
+            rotate: {
+                validUnits: this.radialUnits,
+                default: ['0deg'],
+                range: {
+                    min: -360,
+                    max: 360
+                }
+            },
+            // skew: {
+            //     validUnits: this.radialUnits,
+            //     default: ['30deg', '20deg'],
+            //     range: {
+            //         min: -1,
+            //         max: 1
+            //     }
+            // },
+            skewX: {
+                validUnits: this.radialUnits,
+                default: ['0deg'],
+                range: {
+                    min: -360,
+                    max: 360
+                }
+            },
+            skewY: {
+                validUnits: this.radialUnits,
+                default: ['0deg'],
+                range: {
+                    min: -360,
+                    max: 360
+                }
+            },
+            // matrix3d: {
+            //     validUnits: [''],
+            //     default: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+            //     range: {
+            //         min: -1,
+            //         max: 1
+            //     }
+            // },
+            // translate3d: {
+            //     validUnits: this.linearUnits,
+            //     default: ['12px', '50%', '3em'],
+            //     range: {
+            //         min: -1,
+            //         max: 1
+            //     }
+            // },
+            translateZ: {
+                validUnits: this.linearUnits,
+                default: ['0px'],
+                range: {
+                    min: -100,
+                    max: 100
+                }
+            },
+            // scale3d: {
+            //     validUnits: [''],
+            //     default: [2.5, 1.2, 0.3],
+            //     range: {
+            //         min: -1,
+            //         max: 1
+            //     }
+            // },
+            scaleZ: {
+                validUnits: [''],
+                default: [1],
+                range: {
+                    min: -10,
+                    max: 10
+                }
+            },
+            // rotate3d: {
+            //     validUnits: this.radialUnits,
+            //     default: [1, 2, 3, '10deg'],
+            //     range: {
+            //         min: -1,
+            //         max: 1
+            //     }
+            // },
+            rotateX: {
+                validUnits: this.radialUnits,
+                default: ['0deg'],
+                range: {
+                    min: -360,
+                    max: 360
+                }
+            },
+            rotateY: {
+                validUnits: this.radialUnits,
+                default: ['0deg'],
+                range: {
+                    min: -360,
+                    max: 360
+                }
+            },
+            rotateZ: {
+                validUnits: this.radialUnits,
+                default: ['0deg'],
+                range: {
+                    min: -360,
+                    max: 360
+                }
+            },
+            perspective: {
+                validUnits: this.linearUnits,
+                default: ['100px'],
+                range: {
+                    min: -200,
+                    max: 200
+                }
+            },
+        }
+    </script>
+</css-transform>
