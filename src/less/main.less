@@ -1,11 +1,17 @@
+@import 'variables.less';
 @import "~nouislider/distribute/nouislider.css";
+@import "~normalize.css";
+
+body, html {
+    margin: 0;
+}
 
 .noUi-target {
     margin: 2em 0 4em;
 }
 
 .box {
-    background: hsl(280, 50%, 50%);
+    background-color: hsl(280, 50%, 50%);
     color: white;
     position: fixed;
     z-index: 100;
@@ -13,4 +19,50 @@
     right: 5em;
     padding: 2em;
     font-size: 1.5em;
+}
+
+.site {
+    &__header {
+        width: 100%;
+        background-color: @color-primary;
+        color: @color-light;
+        padding: 1em 2em;
+    }
+
+    &__footer {
+        width: 100%;
+        padding: 1em 2em;
+        background-color: @color-secondary;
+        color: @color-light;
+    }
+}
+
+footer {
+    background-color: @color-primary;
+}
+
+
+.github-corner:hover .octo-arm {
+    animation: octocat-wave 560ms ease-in-out
+}
+
+@keyframes octocat-wave {
+    0%, 100% {
+        transform: rotate(0)
+    }
+    20%, 60% {
+        transform: rotate(-25deg)
+    }
+    40%, 80% {
+        transform: rotate(10deg)
+    }
+}
+
+@media (max-width:500px) {
+    .github-corner:hover .octo-arm {
+        animation: none
+    }
+    .github-corner .octo-arm {
+        animation: octocat-wave 560ms ease-in-out
+    }
 }

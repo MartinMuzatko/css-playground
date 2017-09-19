@@ -1,4 +1,4 @@
-<css-transform>
+<demo-transform>
     .box \{
         transform: {transform};
     \}
@@ -10,7 +10,7 @@
             </div>
         </div>
     </div>
-    <div contenteditable class="box" style="transform: {transform};">
+    <div contenteditable class="box" style="perspective-origin: 25% 75%; transform-style: preserve-3d; transform: {transform};">
         Text
     </div>
     <script>
@@ -204,9 +204,9 @@
                 default: ['100px'],
                 range: {
                     min: -200,
-                    max: 200
+                    max: 2000
                 }
             },
         }
     </script>
-</css-transform>
+</demo-transform>

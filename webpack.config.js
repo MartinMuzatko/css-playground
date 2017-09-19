@@ -30,6 +30,7 @@ module.exports = {
             //{ test: /\.(jpe?g|png|gif|mp4)$/i, loader: 'file?name=img/[name].[ext]'},
             //{ test: /fonts\/.*\.(woff|eot|svg|otf|ttf)$/i, loader: `file?name=fonts/[name].[ext]`},
             { test: /\.less$/, loader: ['style','css','less']},
+            { test: /\.scss$/, loader: ['style','css','sass']},
             { test: /\.json$/, loader: 'json'},
             { test: /\.html$/, loader: 'riotjs' },
         ],
